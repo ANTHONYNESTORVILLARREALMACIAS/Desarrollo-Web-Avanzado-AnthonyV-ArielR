@@ -1,9 +1,8 @@
 // Función asincrónica que simula una consulta a una API
 function obtenerDatosDeAPI() {
     return new Promise((resolve, reject) => {
-        // Simulamos una llamada a la API con un tiempo de espera de 2 segundos
         setTimeout(() => {
-            const exito = true; // Cambia a 'false' para simular un error
+            const exito = true; 
             if (exito) {
                 resolve("Datos recibidos correctamente de la API.");
             } else {
@@ -18,7 +17,7 @@ function ejemploCallback(callback) {
     document.getElementById("callbackOutput").innerText = "Cargando datos con Callback...";
     obtenerDatosDeAPI()
         .then(datos => {
-            callback(datos); // Llama al callback con los datos obtenidos
+            callback(datos); 
         })
         .catch(error => {
             callback(error);
@@ -48,7 +47,6 @@ async function ejemploAsyncAwait() {
     }
 }
 
-// Event listeners para los botones
 
 document.getElementById("callbackButton").addEventListener("click", () => {
     ejemploCallback((resultado) => {

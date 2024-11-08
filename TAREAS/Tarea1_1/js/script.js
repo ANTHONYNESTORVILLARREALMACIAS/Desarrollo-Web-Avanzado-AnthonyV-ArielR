@@ -1,60 +1,45 @@
-// Seleccionamos el elemento donde mostraremos los resultados
-const outputDiv = document.getElementById("output");
+// Simulamos una operación asincrónica de 2 segundos
+function simulacionAsincrona(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-// Ejemplo de asincronismo usando CALLBACKS
+// 1. Función con Callback
 function ejemploCallback(callback) {
-    setTimeout(() => {
-        const mensaje = "Operación completada con Callback.";
-        callback(mensaje);
-    }, 2000);
+    document.getElementById("callbackOutput").innerText = "Ejecutando Callback...";
+    simulacionAsincrona(2000).then(() => {
+        callback("Operación completada con Callback.");
+    });
 }
 
-// Función que ejecuta el ejemplo de Callback
-document.getElementById("callbackButton").addEventListener("click", () => {
-    outputDiv.innerHTML = "Ejecutando Callback...";
-    ejemploCallback((resultado) => {
-        outputDiv.innerHTML = resultado;
-    });
-});
-
-// Ejemplo de asincronismo usando PROMESAS
+// 2. Función con Promesa
 function ejemploPromesa() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const exito = true; 
-            if (exito) {
-                resolve("Operación completada con Promesa.");
-            } else {
-                reject("Error en la operación de Promesa.");
-            }
-        }, 2000);
+    document.getElementById("promiseOutput").innerText = "Ejecutando Promesa...";
+    return simulacionAsincrona(2000).then(() => {
+        return "Operación completada con Promesa.";
     });
 }
 
-// Función que ejecuta el ejemplo de Promesas
-document.getElementById("promiseButton").addEventListener("click", () => {
-    outputDiv.innerHTML = "Ejecutando Promesa...";
-    ejemploPromesa()
-        .then((resultado) => {
-            outputDiv.innerHTML = resultado;
-        })
-        .catch((error) => {
-            outputDiv.innerHTML = error;
-        });
-});
-
-// Ejemplo de asincronismo usando ASYNC/AWAIT
+// 3. Función con Async/Await
 async function ejemploAsyncAwait() {
-    try {
-        outputDiv.innerHTML = "Ejecutando Async/Await...";
-        const resultado = await ejemploPromesa();
-        outputDiv.innerHTML = resultado;
-    } catch (error) {
-        outputDiv.innerHTML = error;
-    }
+    document.getElementById("asyncAwaitOutput").innerText = "Ejecutando Async/Await...";
+    await simulacionAsincrona(2000);
+    document.getElementById("asyncAwaitOutput").innerText = "Operación completada con Async/Await.";
 }
 
-// Función que ejecuta el ejemplo de Async/Await
+// Event listeners para los botones
+
+document.getElementById("callbackButton").addEventListener("click", () => {
+    ejemploCallback((resultado) => {
+        document.getElementById("callbackOutput").innerText = resultado;
+    });
+});
+
+document.getElementById("promiseButton").addEventListener("click", () => {
+    ejemploPromesa().then(resultado => {
+        document.getElementById("promiseOutput").innerText = resultado;
+    });
+});
+
 document.getElementById("asyncAwaitButton").addEventListener("click", () => {
     ejemploAsyncAwait();
 });

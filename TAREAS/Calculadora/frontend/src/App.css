@@ -1,0 +1,65 @@
+body {
+  background: url('https://getbootstrap.com/docs/5.1/examples/headers/assets/brand/bootstrap-logo.svg') 
+    no-repeat center center fixed;
+  background-size: cover;
+  animation: moveBackground 20s infinite alternate ease-in-out;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.card {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+  background-color: #4CAF50;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-success:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  transition: all 0.3s;
+}
+
+.alert {
+  font-size: 1.2rem;
+  animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: scale(1.05);
+  transition: all 0.3s;
+}

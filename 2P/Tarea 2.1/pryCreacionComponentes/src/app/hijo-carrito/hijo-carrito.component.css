@@ -1,0 +1,9 @@
+.carrito {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+}
+.carrito h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}

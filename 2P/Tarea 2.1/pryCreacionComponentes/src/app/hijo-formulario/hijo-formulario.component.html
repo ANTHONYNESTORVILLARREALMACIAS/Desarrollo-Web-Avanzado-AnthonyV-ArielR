@@ -1,0 +1,12 @@
+<div class="formulario">
+  <h3>Formulario</h3>
+  <form (ngSubmit)="enviarDatos()">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" [(ngModel)]="nombre" name="nombre" type="text" required />
+
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="email" name="email" type="email" required />
+
+    <button type="submit">Enviar</button>
+  </form>
+</div>

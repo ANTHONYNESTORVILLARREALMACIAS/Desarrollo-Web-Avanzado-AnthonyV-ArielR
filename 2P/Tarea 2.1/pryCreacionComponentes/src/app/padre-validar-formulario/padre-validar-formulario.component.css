@@ -1,0 +1,13 @@
+.mensaje {
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #28a745; /* Verde de éxito */
+  border-radius: 4px;
+  text-align: center;
+}
+
+.mensaje.error {
+  background-color: #dc3545; /* Rojo de error */
+}

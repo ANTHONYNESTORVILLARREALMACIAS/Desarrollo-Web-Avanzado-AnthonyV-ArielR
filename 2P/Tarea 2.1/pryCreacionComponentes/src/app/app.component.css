@@ -1,0 +1,76 @@
+/* General Container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+
+/* Individual Card */
+.card {
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 300px; /* Fixed width to keep content constrained */
+  max-width: 100%; /* Prevent overflow */
+  text-align: center; /* Center align text and inline content */
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden; /* Ensure content doesn't overflow the card */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Vertically center content */
+  align-items: center; /* Horizontally center content */
+  box-sizing: border-box; /* Include padding and border in size */
+}
+
+.card h2 {
+  color: #0078d7;
+  font-size: 18px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  word-wrap: break-word; /* Break long words */
+}
+
+.card p {
+  font-size: 14px;
+  color: #333333;
+  margin: 8px 0;
+  word-wrap: break-word; /* Ensure text doesn't overflow */
+}
+
+.card img {
+  max-width: 100%; /* Prevent image from exceeding card width */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 8px;
+  border-radius: 4px; /* Add a slight curve to images */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons Styling (if any inside components) */
+button {
+  background-color: #0078d7;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  width: 100%; /* Ensure button fits within card */
+  max-width: 80%; /* Add some margin on the sides */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: #005bb5;
+}

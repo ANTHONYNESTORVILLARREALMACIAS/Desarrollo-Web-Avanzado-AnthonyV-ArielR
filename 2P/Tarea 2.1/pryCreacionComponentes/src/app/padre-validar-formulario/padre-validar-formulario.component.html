@@ -1,0 +1,7 @@
+<!-- Componente Hijo -->
+<app-hijo-validar-formulario (formularioValido)="onValidarFormulario($event)"></app-hijo-validar-formulario>
+
+<!-- Mensaje de validación -->
+<div *ngIf="mensaje" class="mensaje">
+  {{ mensaje }}
+</div>

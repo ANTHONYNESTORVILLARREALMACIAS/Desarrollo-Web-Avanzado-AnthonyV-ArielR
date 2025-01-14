@@ -1,0 +1,70 @@
+/* Encabezado principal */
+.encabezado {
+  background-color: #007bff;
+  color: white;
+  padding: 16px;
+  border-radius: 8px; /* Coincide con las tarjetas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Estilo similar a las tarjetas */
+  width: 200; /* Ajuste al ancho de la tarjeta */
+  max-width: 100%; /* Responsivo, no supera el contenedor */
+  text-align: center; /* Centrado del contenido */
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto; /* Centra horizontalmente dentro de la página */
+  position: relative; /* Se puede ajustar para más personalización */
+}
+
+/* Título del encabezado */
+.encabezado h1 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+  text-transform: uppercase; /* Resalta el título */
+  color: #ffffff;
+}
+
+/* Navegación */
+.encabezado nav ul {
+  list-style: none;
+  display: flex;
+  gap: 8px; /* Espaciado reducido para adaptarse al tamaño de la tarjeta */
+  margin: 8px 0 0; /* Espaciado entre el título y los enlaces */
+  padding: 0;
+  justify-content: center; /* Centra los enlaces dentro del encabezado */
+}
+
+/* Estilos de los enlaces */
+.encabezado nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 8px; /* Botones más compactos */
+  border-radius: 4px; /* Coincide con el diseño de la tarjeta */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover en los enlaces */
+.encabezado nav ul li a:hover {
+  background-color: #0056b3;
+  color: #f9f9f9;
+}
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 100%) {
+  .encabezado {
+    width: 100%; /* Ocupa todo el ancho en dispositivos pequeños */
+    max-width: none;
+    padding: 12px;
+  }
+
+  .encabezado nav ul {
+    flex-direction: column; /* Muestra los enlaces en una columna */
+    gap: 4px;
+  }
+
+  .encabezado nav ul li a {
+    display: block;
+    width: 100%; /* Enlaces ocupan todo el ancho del encabezado */
+    text-align: center;
+  }
+}

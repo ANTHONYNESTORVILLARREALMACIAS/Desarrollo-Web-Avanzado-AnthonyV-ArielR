@@ -1,0 +1,11 @@
+<div class="formulario">
+  <form (submit)="onSubmit($event)">
+    <label for="dato_1">Dato 1:</label>
+    <input type="text" id="dato_1" [(ngModel)]="dato_1" name="dato_1" required />
+
+    <label for="dato_2">Dato 2:</label>
+    <input type="dato_2" id="dato_2" [(ngModel)]="dato_2" name="dato_2" required />
+
+    <button type="submit">Validar</button>
+  </form>
+</div>

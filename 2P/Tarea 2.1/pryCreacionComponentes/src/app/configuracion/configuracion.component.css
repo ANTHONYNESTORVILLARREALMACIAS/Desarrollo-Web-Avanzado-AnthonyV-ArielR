@@ -1,0 +1,17 @@
+.container {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: auto;
+}
+
+h4 {
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+}

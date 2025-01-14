@@ -1,0 +1,21 @@
+/* Contenedor principal del padre */
+.padre {
+  padding: 16px;
+  border-radius: 8px; /* Bordes redondeados para un diseño más suave */
+  background-color: #ffffff; /* Fondo blanco para separar el contenido del fondo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+  max-width: 350px; /* Limita el ancho para que no se expanda demasiado */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+/* Estilos del resultado */
+.resultado {
+  margin-top: 20px;
+  border: 2px solid #28a745; /* Un borde más grueso para destacar */
+  padding: 16px;
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #d4edda; /* Fondo verde claro */
+  font-size: 14px; /* Ajuste de fuente para mayor legibilidad */
+  color: #155724; /* Color del texto para combinar con el fondo */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}

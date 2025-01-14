@@ -1,0 +1,12 @@
+<div [ngClass]="config.tema">
+  <h2>{{ config.idioma === 'es' ? 'Configuración' : 'Settings' }}</h2>
+  <p>{{ config.idioma === 'es' ? 'Idioma actual:' : 'Current Language:' }} {{ config.idioma }}</p>
+  <p>{{ config.idioma === 'es' ? 'Tema actual:' : 'Current Theme:' }} {{ config.tema }}</p>
+
+  <button (click)="cambiarIdioma()">
+    {{ config.idioma === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish' }}
+  </button>
+  <button (click)="cambiarTema()">
+    {{ config.idioma === 'es' ? 'Cambiar a Oscuro' : 'Switch to Dark' }}
+  </button>
+</div>

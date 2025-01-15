@@ -1,0 +1,52 @@
+<div>
+  <h1>Clientes</h1>
+  @if(hyaRegistro()){
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>CIF</th>
+          <th> Direccion</th>
+          <th> Grupo</th>
+          <th>Borrar</th>
+          <th>Seleccion</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (art of clientes; track art.CIF) {
+          <tr>
+            <td>{{art.nombre}}</td>
+            <td>{{art.CIF}}</td>
+            <td> {{art.direccion}}</td>
+            <td> {{art.grupo}}</td>
+            <td><button (click)="borrarRegistros(art.CIF)">Borrar</button></td>
+            <td><button (click)="selccioanr(art)">Seleccionar</button></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @else {
+    <p>No hay registros</p>
+  }
+
+  <div>
+    <p>Nombre: <input type="text" [(ngModel)]="cliente.nombre"></p>
+    <p>CIF: <input type="text" [(ngModel)]="cliente.CIF"></p>
+    <p>Direccion: <input type="text" [(ngModel)]="cliente.direccion"></p>
+    <p>Grupo:
+      <select [(ngModel)]="cliente.grupo">
+        <option value="0">Seleccione un grupo</option>
+        <option value="1">Grupo 1</option>
+        <option value="2">Grupo 2</option>
+        <option value="3">Grupo 3</option>
+        <option value="4">Grupo 4</option>
+      </select>
+    </p>
+
+    <button (click)="agregarRegistro()">Agregar</button>
+    <button (click)="modificar()">Modificar</button>
+  </div>
+</div>
+
+<router-outlet />

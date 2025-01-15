@@ -1,0 +1,54 @@
+<div class="registro-variantes">
+  <h2>Registro de Zapatos por Variantes</h2>
+
+  <form [formGroup]="registroForm" (ngSubmit)="registrarZapato()">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" formControlName="nombre" />
+    </div>
+
+    <div>
+      <label>Colores</label>
+      <div *ngFor="let color of ['Rojo', 'Azul', 'Negro', 'Verde']">
+        <label>
+          <input type="checkbox" formControlName="colores" [value]="color" /> {{ color }}
+        </label>
+      </div>
+    </div>
+
+    <div>
+      <label for="tallas">Tallas</label>
+      <select id="tallas" formControlName="tallas">
+        <option *ngFor="let talla of ['36', '37', '38', '39', '40']" [value]="talla">{{ talla }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="precio">Precio</label>
+      <input id="precio" formControlName="precio" type="number" />
+    </div>
+
+    <button type="submit" [disabled]="registroForm.invalid">Registrar Zapato</button>
+  </form>
+
+  <h3>Zapatos Registrados</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Colores</th>
+        <th>Tallas</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.colores.join(', ') }}</td>
+        <td>{{ producto.tallas }}</td>
+        <td>{{ producto.precioUnitario }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

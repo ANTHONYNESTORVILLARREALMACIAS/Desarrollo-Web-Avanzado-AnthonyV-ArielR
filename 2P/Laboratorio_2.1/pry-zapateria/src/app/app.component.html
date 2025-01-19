@@ -1,0 +1,32 @@
+<!-- app.component.html -->
+<div class="app-container">
+  <h1 class="app-title">Gestión de Inventario de Zapatería</h1>
+
+  <!-- Componente para registrar productos -->
+  <app-inventory-management (productAdded)="onProductAdded($event)" class="component-box"></app-inventory-management>
+
+  <!-- Componente para gestionar entradas y salidas de productos -->
+  <app-product-operations [products]="products" (stockUpdated)="onStockUpdated($event)" class="component-box"></app-product-operations>
+
+  <!-- Componente para registrar variantes de productos -->
+  <app-product-variants [products]="products" (variantsUpdated)="onVariantsUpdated($event)" class="component-box"></app-product-variants>
+
+  <h2 class="products-title">Productos Registrados</h2>
+  <ul class="products-list">
+    <li *ngFor="let product of products" class="product-item">
+      <div class="product-info">
+        <span class="product-name">{{ product.productName }}</span> -
+        <span class="product-brand">{{ product.brand }}</span> -
+        <span class="product-price">{{ product.price }}$</span> -
+        <span class="product-stock">{{ product.stock }}</span>
+      </div>
+      <ul class="variants-list">
+        <li *ngFor="let variant of product.variants" class="variant-item">
+          <span class="variant-color">{{ variant.color }}</span> -
+          <span class="variant-size">{{ variant.size }}</span> -
+          <span class="variant-price">{{ variant.price }}$</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

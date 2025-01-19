@@ -1,0 +1,28 @@
+<!-- inventory-management.component.html -->
+<div class="inventory-container">
+  <h3 class="form-title">Registrar Producto</h3>
+  <form [formGroup]="inventoryForm" (ngSubmit)="addProduct()" class="inventory-form">
+
+    <div class="form-group">
+      <label for="productName" class="form-label">Nombre del Producto:</label>
+      <input id="productName" formControlName="productName" class="form-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="brand" class="form-label">Marca:</label>
+      <input id="brand" formControlName="brand" class="form-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="price" class="form-label">Precio:</label>
+      <input id="price" type="number" formControlName="price" class="form-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="stock" class="form-label">Stock:</label>
+      <input id="stock" type="number" formControlName="stock" class="form-input" required />
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="!inventoryForm.valid">Registrar</button>
+  </form>
+</div>

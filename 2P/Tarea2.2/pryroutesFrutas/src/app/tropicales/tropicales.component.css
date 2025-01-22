@@ -1,0 +1,86 @@
+/* Título */
+h2 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: #f39c12; /* Color naranja suave */
+  letter-spacing: 1px;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Descripción corta */
+p.lead {
+  font-size: 1.2rem;
+  color: #6c757d; /* Color gris suave */
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Botones (Mango, Papaya, Gestionar Frutas) */
+.btn {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones de color naranja para Mango y Papaya */
+.btn-warning {
+  background-color: #f39c12;
+  border-color: #f39c12;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+  border-color: #d35400;
+}
+
+/* Botón de color verde para gestionar frutas */
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Separador de líneas (HR) */
+hr {
+  border-top: 2px solid #f39c12; /* Naranja brillante */
+}
+
+/* Espaciado entre los elementos */
+.mb-4 {
+  margin-bottom: 2.5rem !important;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.mt-4 {
+  margin-top: 2rem !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Tamaño de los botones en dispositivos pequeños */
+@media (max-width: 576px) {
+  .btn {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
+}

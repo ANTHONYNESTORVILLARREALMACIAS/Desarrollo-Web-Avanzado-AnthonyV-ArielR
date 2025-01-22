@@ -1,0 +1,122 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-success" style="font-size: 2.5rem; text-transform: uppercase; font-weight: bold;">
+    Gestión de Frutas
+  </h2>
+
+  <!-- Card con fondo gradiente para formulario -->
+  <div class="card p-4 rounded shadow" style="background: linear-gradient(to right, #d3d3d3, #28a745);">
+    <form (ngSubmit)="agregarFruta()" #frutaForm="ngForm">
+      <h4 class="mb-4 text-primary" style="font-size: 1.8rem; font-weight: bold;">
+        {{ editIndex !== null ? 'Editar Fruta' : 'Agregar Nueva Fruta' }}
+      </h4>
+
+      <div class="form-group mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          id="nombre"
+          [(ngModel)]="nuevaFruta.nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Nombre de la fruta"
+          required
+          #nombre="ngModel"
+          (keypress)="soloLetras($event)"
+          style="font-size: 1.1rem;"
+        />
+        <div *ngIf="nombre.invalid && nombre.touched" class="text-danger mt-1" style="font-size: 0.9rem;">
+          El nombre es obligatorio y solo puede contener letras.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input
+          id="descripcion"
+          [(ngModel)]="nuevaFruta.descripcion"
+          name="descripcion"
+          class="form-control"
+          placeholder="Descripción de la fruta"
+          required
+          #descripcion="ngModel"
+          style="font-size: 1.1rem;"
+        />
+        <div *ngIf="descripcion.invalid && descripcion.touched" class="text-danger mt-1" style="font-size: 0.9rem;">
+          La descripción es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input
+          id="precio"
+          [(ngModel)]="nuevaFruta.precio"
+          name="precio"
+          type="number"
+          class="form-control"
+          placeholder="Precio en USD"
+          required
+          min="0.01"
+          #precio="ngModel"
+          style="font-size: 1.1rem;"
+        />
+        <div *ngIf="precio.invalid && precio.touched" class="text-danger mt-1" style="font-size: 0.9rem;">
+          El precio debe ser mayor a 0.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="imagen" class="form-label">Link de Imagen</label>
+        <input
+          id="imagen"
+          [(ngModel)]="nuevaFruta.imagen"
+          name="imagen"
+          class="form-control"
+          placeholder="URL de la imagen"
+          required
+          #imagen="ngModel"
+          style="font-size: 1.1rem;"
+        />
+        <div *ngIf="imagen.invalid && imagen.touched" class="text-danger mt-1" style="font-size: 0.9rem;">
+          El enlace de la imagen es obligatorio.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100" [disabled]="frutaForm.invalid" style="font-size: 1.2rem; padding: 1rem;">
+        {{ editIndex !== null ? 'Actualizar' : 'Agregar' }}
+      </button>
+    </form>
+  </div>
+
+  <!-- Lista de frutas -->
+  <div *ngIf="frutas.length > 0" class="mt-5">
+    <h3 class="text-center mb-4" style="font-size: 2rem; font-weight: bold; color: #28a745;">
+      Lista de Frutas Registradas
+    </h3>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let fruta of frutas; index as i">
+        <div class="card mb-4 shadow-lg" style="border-radius: 10px;">
+          <img
+            [src]="fruta.imagen"
+            class="card-img-top"
+            alt="{{ fruta.nombre }}"
+            style="height: 150px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px;"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-primary" style="font-size: 1.3rem;">{{ fruta.nombre }}</h5>
+            <p class="card-text text-muted" style="font-size: 1.1rem;">{{ fruta.descripcion }}</p>
+            <p><strong>Precio:</strong> ${{ fruta.precio.toFixed(2) }}</p>
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-primary btn-sm" (click)="editarFruta(i)" style="font-size: 1rem;">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="eliminarFruta(i)" style="font-size: 1rem;">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje si no hay frutas -->
+  <div *ngIf="frutas.length === 0" class="text-center mt-5">
+    <p class="text-muted" style="font-size: 1.2rem;">No hay frutas tropicales registradas.</p>
+  </div>
+</div>

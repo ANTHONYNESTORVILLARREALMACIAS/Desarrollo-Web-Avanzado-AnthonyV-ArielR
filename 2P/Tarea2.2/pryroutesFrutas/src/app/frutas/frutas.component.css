@@ -1,0 +1,125 @@
+/* Estilo general para la página */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para los títulos */
+h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Card del formulario */
+.card {
+  background: linear-gradient(to right, #d3d3d3, #28a745);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+/* Estilo de los botones */
+.btn {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success {
+  background-color: #00eeff;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #00eeff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Estilo de los mensajes de error */
+.text-danger {
+  font-size: 0.9rem;
+  color: #dc3545;
+}
+
+/* Card para las frutas registradas */
+.card.mb-4 {
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #007bff;
+}
+
+.card-text {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Estilo de la lista de frutas */
+.container .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-4 {
+  flex: 1 1 30%;
+  margin-bottom: 20px;
+}
+
+/* Estilo de los mensajes cuando no hay frutas */
+.text-muted {
+  font-size: 1.2rem;
+  color: #6c757d;
+}

@@ -1,0 +1,108 @@
+/* Estilo para la barra de navegación */
+.navbar {
+  background: linear-gradient(to right, #28a745, #d3d3d3);
+  border-radius: 0 0 10px 10px;
+  padding: 1rem 0;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.navbar .navbar-toggler-icon {
+  background-color: #ffffff;
+}
+
+/* Estilo para el contenido principal */
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el texto dentro de la barra de navegación */
+.navbar-nav {
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #28a745;
+  text-decoration: underline;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 991px) {
+  .navbar .navbar-toggler {
+    display: block;
+  }
+}
+
+/* Estilo para las tarjetas */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura que el contenido se distribuya y la tarjeta no se colapse */
+  height: 100%; /* Hace que la tarjeta ocupe todo el espacio disponible */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  flex-grow: 1; /* Permite que el contenido crezca dentro de la tarjeta */
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #28a745;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Estilo para los botones en las tarjetas */
+.card .btn {
+  font-size: 1rem;
+}
+
+/* Enlaces en el navbar */
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #28a745;
+  text-decoration: underline;
+}
+
+.navbar-toggler {
+  border: none;
+}

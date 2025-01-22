@@ -1,0 +1,85 @@
+/* Estilo general de las tarjetas */
+.card {
+  border-radius: 12px; /* Bordes redondeados */
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Imagen de la fruta */
+.mora-img, .frambuesa-img {
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px; /* Bordes redondeados en la imagen */
+}
+
+/* Estilo para el texto dentro de la tarjeta */
+.card .fs-5 {
+  font-size: 1.2rem; /* Tamaño de fuente más grande para mejor legibilidad */
+  color: #333; /* Texto oscuro */
+  line-height: 1.6;
+}
+
+/* Estilo para los títulos de las frutas */
+h2 {
+  font-family: 'Arial', sans-serif;
+  color: #343a40; /* Color oscuro para Mora */
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Descripción general debajo del título */
+p.lead {
+  font-size: 1.2rem;
+  color: #6c757d; /* Gris suave */
+  line-height: 1.6;
+}
+
+/* Listas dentro de la tarjeta */
+ul.list-unstyled {
+  font-size: 1rem;
+  color: #555;
+  padding-left: 0;
+}
+
+ul.list-unstyled li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+ul.list-unstyled li::before {
+  content: "✔ "; /* Icono de check */
+  color: #28a745; /* Color verde para los checks */
+}
+
+/* Espaciado y alineación */
+.container {
+  margin-top: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 2.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.text-start {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.1rem;
+}

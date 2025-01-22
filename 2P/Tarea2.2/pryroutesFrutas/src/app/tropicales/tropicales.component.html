@@ -1,0 +1,51 @@
+<div class="container text-center mt-5">
+  <!-- Título de la sección -->
+  <h2 class="mb-4 display-5 fw-bold text-warning" style="font-size: 2.5rem; text-transform: uppercase;">
+    Frutas Tropicales 🌴
+  </h2>
+
+  <!-- Descripción corta -->
+  <p class="lead text-muted mb-4" style="font-size: 1.2rem; line-height: 1.6;">
+    Selecciona una opción para explorar o gestionar nuestras frutas tropicales.
+  </p>
+
+  <!-- Botones para Mango y Papaya -->
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 mb-4">
+      <a
+        routerLink="/tropicales/mango"
+        class="btn btn-warning btn-lg w-100 shadow-lg py-3 fw-bold text-white"
+        style="font-size: 1.3rem; border-radius: 12px; transition: transform 0.3s ease-in-out;"
+      >
+        Mango 🥭
+      </a>
+    </div>
+    <div class="col-md-6 mb-4">
+      <a
+        routerLink="/tropicales/papaya"
+        class="btn btn-warning btn-lg w-100 shadow-lg py-3 fw-bold text-white"
+        style="font-size: 1.3rem; border-radius: 12px; transition: transform 0.3s ease-in-out;"
+      >
+        Papaya 🍈
+      </a>
+    </div>
+  </div>
+
+  <hr class="my-5" style="border-top: 2px solid #f39c12;" />
+
+  <!-- Botón para gestionar frutas -->
+  <div class="row">
+    <div class="col-12">
+      <br>
+      <a
+        routerLink="/tropicales/frutas"
+        class="btn btn-success btn-lg shadow-lg py-3 fw-bold text-white"
+        style="font-size: 1.3rem; border-radius: 12px; transition: transform 0.3s ease-in-out; padding: 1rem 2rem;"
+      >
+        Gestionar Frutas 🌟
+      </a>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

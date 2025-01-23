@@ -1,0 +1,176 @@
+<div class="container">
+  <br>
+  <br>
+  <h2>Gestión de Inventario</h2>
+
+  <!-- Botón para agregar nuevo producto -->
+  <button (click)="mostrarDialogoAgregar()">Nuevo Producto</button>
+
+  <!-- Tabla de productos -->
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.precio | currency: 'USD' }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>
+          <button (click)="editarProducto(producto)">Editar</button>
+          <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulario de agregar/editar producto -->
+  <div *ngIf="showDialog" class="dialog">
+    <h3>{{ producto.id ? 'Editar Producto' : 'Nuevo Producto' }}</h3>
+    <form #form="ngForm" (ngSubmit)="guardarProducto()" novalidate>
+      <div>
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          [(ngModel)]="producto.nombre"
+          name="nombre"
+          required
+          #nombre="ngModel"
+        />
+        <div *ngIf="nombre.invalid && nombre.touched" class="error-message">
+          El nombre es obligatorio.
+        </div>
+        <!-- Mostrar mensaje de error si el nombre ya está repetido -->
+        <div *ngIf="mensajeError" class="error-message">
+          {{ mensajeError }}
+        </div>
+      </div>
+
+      <div>
+        <label for="categoria">Categoría</label>
+        <select
+          id="categoria"
+          [(ngModel)]="producto.categoria"
+          name="categoria"
+          required
+          #categoria="ngModel"
+        >
+          <option value="" disabled>Selecciona una categoría</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+        <div *ngIf="categoria.invalid && categoria.touched" class="error-message">
+          La categoría es obligatoria.
+        </div>
+      </div>
+
+      <div>
+        <label for="precio">Precio</label>
+        <input
+          id="precio"
+          type="number"
+          [(ngModel)]="producto.precio"
+          name="precio"
+          required
+          min="0.01"
+          #precio="ngModel"
+        />
+        <div *ngIf="precio.invalid && precio.touched" class="error-message">
+          El precio debe ser mayor a 0.
+        </div>
+      </div>
+
+      <div>
+        <label for="stock">Stock</label>
+        <input
+          id="stock"
+          type="number"
+          [(ngModel)]="producto.stock"
+          name="stock"
+          required
+          min="0"
+          #stock="ngModel"
+        />
+        <div *ngIf="stock.invalid && stock.touched" class="error-message">
+          El stock debe ser un número mayor o igual a 0.
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" (click)="cerrarDialogo()">Cancelar</button>
+        <button type="submit" [disabled]="form.invalid">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Estilos para el formulario de diálogo -->
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 1000;
+  }
+
+  .dialog form div {
+    margin-bottom: 15px;
+  }
+
+  .dialog input,
+  .dialog select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .dialog .actions {
+    text-align: right;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+</style>

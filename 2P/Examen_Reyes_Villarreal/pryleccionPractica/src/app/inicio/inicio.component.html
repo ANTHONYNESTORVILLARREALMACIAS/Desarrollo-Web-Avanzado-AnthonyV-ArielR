@@ -1,0 +1,59 @@
+<div class="inicio-container">
+  <div class="inicio-content">
+    <h1>Bienvenido al Sistema de Inventario</h1>
+    <p>Administra tus productos de manera eficiente con esta sencilla herramienta.</p>
+    <button (click)="irAInventario()" class="inicio-button">Ir al Inventario</button>
+  </div>
+</div>
+
+<style>
+  .inicio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f7f6;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .inicio-content {
+    text-align: center;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #4caf50;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .inicio-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .inicio-button:hover {
+    background-color: #45a049;
+  }
+
+  .inicio-button:focus {
+    outline: none;
+  }
+</style>

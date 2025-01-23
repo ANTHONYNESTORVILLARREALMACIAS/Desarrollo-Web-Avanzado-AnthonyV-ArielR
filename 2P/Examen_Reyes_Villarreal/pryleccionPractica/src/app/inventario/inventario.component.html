@@ -1,176 +1,163 @@
 <div class="container">
   <br>
   <br>
-  <h2>Gestión de Inventario</h2>
+    <h2>Gestión de Inventario</h2>
 
-  <!-- Botón para agregar nuevo producto -->
-  <button (click)="mostrarDialogoAgregar()">Nuevo Producto</button>
+    <!-- Filtro de búsqueda -->
+    <div class="field">
+      <label for="search">Buscar</label>
+      <input
+        id="search"
+        type="text"
+        pInputText
+        [(ngModel)]="searchText"
+        (input)="filtrarProductos()"
+        placeholder="Buscar productos por nombre o categoría"
+      />
+    </div>
 
-  <!-- Tabla de productos -->
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Categoría</th>
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let producto of productos">
-        <td>{{ producto.nombre }}</td>
-        <td>{{ producto.categoria }}</td>
-        <td>{{ producto.precio | currency: 'USD' }}</td>
-        <td>{{ producto.stock }}</td>
-        <td>
-          <button (click)="editarProducto(producto)">Editar</button>
-          <button (click)="eliminarProducto(producto.id)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <!-- Tabla de productos -->
+    <p-table
+      [value]="productos"
+      [paginator]="true"
+      [rows]="5"
+      [globalFilterFields]="['nombre', 'categoria']"
+      [responsiveLayout]="'scroll'"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="nombre">Nombre <p-sortIcon field="nombre"></p-sortIcon></th>
+          <th pSortableColumn="categoria">Categoría <p-sortIcon field="categoria"></p-sortIcon></th>
+          <th pSortableColumn="precio">Precio <p-sortIcon field="precio"></p-sortIcon></th>
+          <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
 
-  <!-- Formulario de agregar/editar producto -->
-  <div *ngIf="showDialog" class="dialog">
-    <h3>{{ producto.id ? 'Editar Producto' : 'Nuevo Producto' }}</h3>
-    <form #form="ngForm" (ngSubmit)="guardarProducto()" novalidate>
-      <div>
-        <label for="nombre">Nombre</label>
-        <input
-          id="nombre"
-          type="text"
-          [(ngModel)]="producto.nombre"
-          name="nombre"
-          required
-          #nombre="ngModel"
-        />
-        <div *ngIf="nombre.invalid && nombre.touched" class="error-message">
-          El nombre es obligatorio.
+      <ng-template pTemplate="body" let-producto>
+        <tr>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>{{ producto.precio | currency: 'USD' }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>
+            <p-button
+              label="Editar"
+              icon="pi pi-pencil"
+              class="p-button-sm"
+              (onClick)="editarProducto(producto)"
+            ></p-button>
+            <p-button
+              label="Eliminar"
+              icon="pi pi-trash"
+              class="p-button-sm"
+              (onClick)="eliminarProducto(producto.id)"
+            ></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <!-- Botón para agregar nuevo producto -->
+    <p-button
+      label="Nuevo Producto"
+      icon="pi pi-plus"
+      class="p-button-sm"
+      (onClick)="mostrarDialogoAgregar()"
+    ></p-button>
+
+    <!-- Dialog para agregar/editar productos -->
+    <p-dialog
+      header="{{ producto.id ? 'Editar Producto' : 'Nuevo Producto' }}"
+      [(visible)]="showDialog"
+      [modal]="true"
+      [closable]="false"
+    >
+      <form #form="ngForm" (ngSubmit)="guardarProducto()" novalidate>
+        <div class="p-fluid">
+
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input
+              id="nombre"
+              type="text"
+              pInputText
+              [(ngModel)]="producto.nombre"
+              name="nombre"
+              required
+              #nombre="ngModel"
+            />
+            <small *ngIf="nombre.invalid && nombre.touched" class="p-error">
+              El nombre es obligatorio.
+            </small>
+            <small *ngIf="mensajeError" class="p-error">{{ mensajeError }}</small>
+          </div>
+
+          <div class="field">
+            <label for="categoria">Categoría</label>
+            <p-dropdown
+              id="categoria"
+              [options]="categorias"
+              [(ngModel)]="producto.categoria"
+              name="categoria"
+              placeholder="Selecciona una categoría"
+              required
+              #categoria="ngModel"
+            ></p-dropdown>
+            <small *ngIf="categoria.invalid && categoria.touched" class="p-error">
+              La categoría es obligatoria.
+            </small>
+          </div>
+
+          <div class="field">
+            <label for="precio">Precio</label>
+            <input
+              id="precio"
+              type="number"
+              pInputText
+              [(ngModel)]="producto.precio"
+              name="precio"
+              required
+              min="0.01"
+              #precio="ngModel"
+            />
+            <small *ngIf="precio.invalid && precio.touched" class="p-error">
+              El precio debe ser mayor a 0.
+            </small>
+          </div>
+
+          <div class="field">
+            <label for="stock">Stock</label>
+            <input
+              id="stock"
+              type="number"
+              pInputText
+              [(ngModel)]="producto.stock"
+              name="stock"
+              required
+              min="0"
+              #stock="ngModel"
+            />
+            <small *ngIf="stock.invalid && stock.touched" class="p-error">
+              El stock debe ser un número mayor o igual a 0.
+            </small>
+          </div>
+
+          <div class="actions">
+            <p-button
+              label="Cancelar"
+              icon="pi pi-times"
+              class="p-button-text"
+              (onClick)="cerrarDialogo()"
+            ></p-button>
+            <p-button
+              label="Guardar"
+              icon="pi pi-check"
+              [disabled]="form.invalid"
+              type="submit"
+            ></p-button>
+          </div>
         </div>
-        <!-- Mostrar mensaje de error si el nombre ya está repetido -->
-        <div *ngIf="mensajeError" class="error-message">
-          {{ mensajeError }}
-        </div>
-      </div>
-
-      <div>
-        <label for="categoria">Categoría</label>
-        <select
-          id="categoria"
-          [(ngModel)]="producto.categoria"
-          name="categoria"
-          required
-          #categoria="ngModel"
-        >
-          <option value="" disabled>Selecciona una categoría</option>
-          <option *ngFor="let categoria of categorias" [value]="categoria">
-            {{ categoria }}
-          </option>
-        </select>
-        <div *ngIf="categoria.invalid && categoria.touched" class="error-message">
-          La categoría es obligatoria.
-        </div>
-      </div>
-
-      <div>
-        <label for="precio">Precio</label>
-        <input
-          id="precio"
-          type="number"
-          [(ngModel)]="producto.precio"
-          name="precio"
-          required
-          min="0.01"
-          #precio="ngModel"
-        />
-        <div *ngIf="precio.invalid && precio.touched" class="error-message">
-          El precio debe ser mayor a 0.
-        </div>
-      </div>
-
-      <div>
-        <label for="stock">Stock</label>
-        <input
-          id="stock"
-          type="number"
-          [(ngModel)]="producto.stock"
-          name="stock"
-          required
-          min="0"
-          #stock="ngModel"
-        />
-        <div *ngIf="stock.invalid && stock.touched" class="error-message">
-          El stock debe ser un número mayor o igual a 0.
-        </div>
-      </div>
-
-      <div class="actions">
-        <button type="button" (click)="cerrarDialogo()">Cancelar</button>
-        <button type="submit" [disabled]="form.invalid">Guardar</button>
-      </div>
-    </form>
+      </form>
+    </p-dialog>
   </div>
-</div>
-
-<!-- Estilos para el formulario de diálogo -->
-<style>
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  button {
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-  }
-
-  table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-
-  table th,
-  table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-
-  .dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ddd;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    z-index: 1000;
-  }
-
-  .dialog form div {
-    margin-bottom: 15px;
-  }
-
-  .dialog input,
-  .dialog select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-
-  .dialog .actions {
-    text-align: right;
-  }
-
-  .error-message {
-    color: red;
-    font-size: 12px;
-  }
-</style>

@@ -2,7 +2,7 @@
   <div class="inicio-content">
     <h1>Bienvenido al Sistema de Inventario</h1>
     <p>Administra tus productos de manera eficiente con esta sencilla herramienta.</p>
-    <button (click)="irAInventario()" class="inicio-button">Ir al Inventario</button>
+    <p-button (click)="irAInventario()" class="inicio-button" label="Ir a Inventario" />
   </div>
 </div>
 
@@ -39,21 +39,11 @@
   }
 
   .inicio-button {
-    background-color: #4caf50;
-    color: white;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-
-  .inicio-button:hover {
-    background-color: #45a049;
-  }
-
-  .inicio-button:focus {
-    outline: none;
   }
 </style>

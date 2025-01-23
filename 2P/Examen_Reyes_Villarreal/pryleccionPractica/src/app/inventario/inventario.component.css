@@ -1,0 +1,107 @@
+/* General container styling */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Search bar styling */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.field input,
+.field p-dropdown {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Error message styling */
+.p-error {
+  color: #f44336;
+  font-size: 12px;
+}
+
+/* Table styling */
+p-table {
+  margin-bottom: 20px;
+}
+
+p-table th {
+  text-align: left;
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+p-table td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+p-table .p-button-sm {
+  margin-right: 5px;
+}
+
+/* Dialog styling */
+p-dialog {
+  width: 400px;
+}
+
+p-dialog .p-fluid {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Buttons styling */
+.p-button {
+  font-size: 14px;
+}
+
+.p-button-text {
+  color: #777;
+}
+
+.p-button-danger {
+  background-color: #f44336;
+  border: none;
+  color: #fff;
+}
+
+.p-button-danger:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  p-dialog {
+    width: 90%;
+  }
+}

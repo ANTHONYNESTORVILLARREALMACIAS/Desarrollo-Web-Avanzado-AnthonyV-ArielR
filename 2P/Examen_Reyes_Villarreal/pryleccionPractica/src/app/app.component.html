@@ -1,11 +1,11 @@
 <div class="app-container">
   <!-- Barra de navegación fija en la parte superior -->
   <div class="navbar">
-    <button (click)="irAInicio()" class="inicio-button">Ir a Inicio</button>
-    <button (click)="irAInventario()" class="inicio-button">Ir al Inventario</button>
-
+    <div class="inicio-button">
+      <p-button (click)="irAInicio()" label="Ir a Inicio"/>
+      <p-button (click)="irAInventario()" label="Ir a Inventario" />
+    </div>
   </div>
-
   <!-- Aquí se carga el componente según la ruta seleccionada -->
   <router-outlet></router-outlet>
 </div>
@@ -20,7 +20,7 @@
 
   /* Barra de navegación fija en la parte superior */
   .navbar {
-    position: fixed;
+    position: center;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,29 +29,19 @@
     z-index: 1000;
     display: flex;
     justify-content: center;
-    height: 60px; /* Altura de la barra de navegación */
+    height: 100px; /* Altura de la barra de navegación */
   }
 
   /* Estilo para los botones de navegación */
   .inicio-button {
-    background-color: #4CAF50;
-    color: white;
     padding: 10px 20px;
-    margin: 0 10px;
     border: none;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
   }
 
-  /* Efecto al pasar el ratón sobre los botones */
-  .inicio-button:hover {
-    background-color: #45a049;
-  }
 
-  .inicio-button:focus {
-    outline: none;
-  }
 
   /* Ajuste del contenido para que no se oculte detrás de la barra de navegación */
   router-outlet {

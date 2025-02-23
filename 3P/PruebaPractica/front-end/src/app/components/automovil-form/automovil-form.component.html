@@ -1,0 +1,65 @@
+<div class="card">
+  <h2>
+    <i class="bi" [class.bi-pencil-square]="editando" [class.bi-car-front]="!editando"></i>
+    {{ editando ? 'Editar' : 'Crear' }} Automóvil
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Modelo</label>
+      <input type="text"
+             class="form-control"
+             formControlName="modelo"
+             [class.is-invalid]="form.get('modelo')?.invalid && form.get('modelo')?.touched">
+      <div class="invalid-feedback">
+        El modelo es requerido (máx. 50 caracteres)
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Propietario</label>
+      <select class="form-select"
+              formControlName="propietarioId"
+              [class.is-invalid]="form.get('propietarioId')?.invalid && form.get('propietarioId')?.touched">
+        <option value="">Seleccione un propietario</option>
+        <option *ngFor="let p of propietarios" [value]="p.id">
+          {{ p.nombreCompleto }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Debe seleccionar un propietario
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Valor</label>
+      <input type="number"
+             class="form-control"
+             formControlName="valor"
+             [class.is-invalid]="form.get('valor')?.invalid && form.get('valor')?.touched">
+      <div class="invalid-feedback">
+        El valor debe ser mayor a 0
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <label class="form-label">Accidentes</label>
+      <input type="number"
+             class="form-control"
+             formControlName="accidentes"
+             [class.is-invalid]="form.get('accidentes')?.invalid && form.get('accidentes')?.touched">
+      <div class="invalid-feedback">
+        Número de accidentes no válido
+      </div>
+    </div>
+
+    <div class="col-12 d-flex gap-2 justify-content-end border-top pt-3 mt-4">
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="form.invalid">
+        {{ editando ? 'Actualizar' : 'Crear' }}
+      </button>
+      <a routerLink="/automoviles" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,37 @@
+<div class="card">
+  <h2><i class="bi bi-file-earmark-car me-2"></i>Detalles del Automóvil</h2>
+
+  <div *ngIf="automovil" class="row">
+    <div class="col-md-4 text-center">
+      <div class="avatar-circle bg-primary text-white mb-3">
+        <i class="bi bi-car-front fs-1"></i>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <dl class="row">
+        <dt class="col-sm-4">Modelo</dt>
+        <dd class="col-sm-8">{{ automovil.modelo }}</dd>
+
+        <dt class="col-sm-4">Valor</dt>
+        <dd class="col-sm-8">{{ automovil.valor | currency }}</dd>
+
+        <dt class="col-sm-4">Accidentes</dt>
+        <dd class="col-sm-8">{{ automovil.accidentes }}</dd>
+
+        <dt class="col-sm-4">Propietario</dt>
+        <dd class="col-sm-8">{{ automovil.propietarioNombreCompleto }}</dd>
+
+        <dt class="col-sm-4">Costo Seguro</dt>
+        <dd class="col-sm-8">{{ automovil.costoSeguro | currency }}</dd>
+      </dl>
+
+      <div class="mt-4">
+        <a routerLink="/automoviles" class="btn btn-outline-primary">
+          <i class="bi bi-arrow-left me-1"></i>
+          Volver al listado
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

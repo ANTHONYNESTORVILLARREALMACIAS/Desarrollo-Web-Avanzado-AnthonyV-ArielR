@@ -1,0 +1,41 @@
+<div class="card">
+  <h2><i class="bi bi-file-earmark-person me-2"></i>Detalles del Propietario</h2>
+
+  <div *ngIf="propietario" class="row">
+    <div class="col-md-4 text-center">
+      <div class="avatar-circle bg-primary text-white mb-3">
+        <i class="bi bi-person fs-1"></i>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <dl class="row">
+        <dt class="col-sm-4">Nombre Completo</dt>
+        <dd class="col-sm-8">{{ propietario.nombreCompleto }}</dd>
+
+        <dt class="col-sm-4">Edad</dt>
+        <dd class="col-sm-8">{{ propietario.edad }}</dd>
+
+        <dt class="col-sm-4">Vehículos Registrados</dt>
+        <dd class="col-sm-8">
+          <div *ngIf="propietario.automovilesIds?.length; else noAutos">
+            <span *ngFor="let id of propietario.automovilesIds"
+                  class="badge bg-secondary me-1">
+              {{ id }}
+            </span>
+          </div>
+          <ng-template #noAutos>
+            <span class="text-muted">No tiene vehículos registrados</span>
+          </ng-template>
+        </dd>
+      </dl>
+
+      <div class="mt-4">
+        <a routerLink="/propietarios" class="btn btn-outline-primary">
+          <i class="bi bi-arrow-left me-1"></i>
+          Volver al listado
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.feature-card {
+  align-items: center;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.pikbest.com%2Fbackgrounds%2Fqianku-auto-technology-car-blue-gradient-background_6238011.html&psig=AOvVaw37IzZnpH1ioqACSgoA78bW&ust=1740426555575000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKiU_LPI2osDFQAAAAAdAAAAABAJ') center/cover;
+  min-height: 50vh;
+  display: flex;
+}
+
+.hero-content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .btn-md {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+  }
+}

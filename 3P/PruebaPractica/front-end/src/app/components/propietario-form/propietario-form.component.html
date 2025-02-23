@@ -1,0 +1,50 @@
+<div class="card">
+  <h2>
+    <i class="bi" [class.bi-pencil-square]="editando" [class.bi-person-plus]="!editando"></i>
+    {{ editando ? 'Editar' : 'Crear' }} Propietario
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Nombre</label>
+      <input type="text"
+      class="form-control"
+      formControlName="nombre"
+      [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
+      <div class="invalid-feedback">
+        El nombre es requerido
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Apellido</label>
+      <input type="text"
+      class="form-control"
+      formControlName="apellido"
+      [class.is-invalid]="form.get('apellido')?.invalid && form.get('apellido')?.touched">
+      <div class="invalid-feedback">
+        El apellido es requerido
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Edad</label>
+      <input type="number"
+      class="form-control"
+      formControlName="edad"
+      [class.is-invalid]="form.get('edad')?.invalid && form.get('edad')?.touched">
+      <div class="invalid-feedback">
+        La edad debe ser mínimo 18 años
+      </div>
+    </div>
+
+    <div class="col-12 d-flex gap-2 justify-content-end border-top pt-3 mt-4">
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="form.invalid">
+        {{ editando ? 'Actualizar' : 'Crear' }}
+      </button>
+      <a routerLink="/propietarios" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>

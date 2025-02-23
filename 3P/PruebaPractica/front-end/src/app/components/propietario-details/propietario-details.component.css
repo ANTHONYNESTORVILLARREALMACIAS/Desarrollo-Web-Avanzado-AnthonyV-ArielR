@@ -1,0 +1,18 @@
+/* Detalles */
+dl {
+  font-size: 1.1rem;
+
+  dt {
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+
+  dd {
+    margin-bottom: 1rem;
+  }
+}
+
+.badge {
+  font-size: 0.9em;
+  padding: 0.6em 0.8em;
+}

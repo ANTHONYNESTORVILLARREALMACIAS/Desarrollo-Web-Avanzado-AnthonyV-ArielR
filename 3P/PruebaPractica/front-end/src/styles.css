@@ -1,0 +1,76 @@
+/* Variables de color */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --background-light: #f8f9fa;
+  --box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilos generales */
+body {
+  background-color: var(--background-light);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  border: none;
+
+  &:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-danger {
+  background-color: var(--accent-color);
+}
+
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.hover-row {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateX(5px);
+  }
+}

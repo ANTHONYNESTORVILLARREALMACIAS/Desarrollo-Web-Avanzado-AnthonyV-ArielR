@@ -1,0 +1,48 @@
+<div class="card">
+  <h2><i class="bi bi-people me-2"></i>Propietarios Registrados</h2>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+          <th>Vehículos</th>
+          <th class="text-end">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of propietarios" class="hover-row">
+          <td class="fw-bold">{{ p.nombreCompleto }}</td>
+          <td>{{ p.edad }}</td>
+          <td>
+            <span class="badge bg-secondary">
+              {{ p.automovilesIds.length || 0 }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="d-flex gap-2 justify-content-end">
+              <a [routerLink]="['/propietarios/detalles', p.id]"
+              class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-eye"></i>
+              </a>
+              <a [routerLink]="['/propietarios/editar', p.id]"
+              class="btn btn-sm btn-outline-success">
+                <i class="bi bi-pencil"></i>
+              </a>
+              <button (click)="eliminar(p.id!)"
+                      class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="propietarios.length === 0" class="text-center py-4 text-muted">
+      <i class="bi bi-info-circle fs-4"></i>
+      <p class="mt-2">No se encontraron propietarios registrados</p>
+    </div>
+  </div>
+</div>

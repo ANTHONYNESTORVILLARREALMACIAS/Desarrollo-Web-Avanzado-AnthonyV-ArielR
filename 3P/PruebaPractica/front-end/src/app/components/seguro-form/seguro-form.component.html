@@ -1,0 +1,43 @@
+<div class="card">
+  <h2>
+    <i class="bi" [class.bi-pencil-square]="editando" [class.bi-shield-plus]="!editando"></i>
+    {{ editando ? 'Editar' : 'Crear' }} Seguro
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Automóvil</label>
+      <select class="form-select"
+              formControlName="automovilId"
+              [class.is-invalid]="form.get('automovilId')?.invalid && form.get('automovilId')?.touched">
+        <option value="">Seleccione un automóvil</option>
+        <option *ngFor="let a of automoviles" [value]="a.id">
+          {{ a.modelo }} - {{ a.propietarioNombreCompleto }}
+        </option>
+      </select>
+      <div class="invalid-feedback">
+        Debe seleccionar un automóvil
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Costo Total</label>
+      <input type="number"
+             class="form-control"
+             formControlName="costoTotal"
+             [class.is-invalid]="form.get('costoTotal')?.invalid && form.get('costoTotal')?.touched">
+      <div class="invalid-feedback">
+        El costo debe ser mayor a 0
+      </div>
+    </div>
+
+    <div class="col-12 d-flex gap-2 justify-content-end border-top pt-3 mt-4">
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="form.invalid">
+        {{ editando ? 'Actualizar' : 'Crear' }}
+      </button>
+      <a routerLink="/seguros" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>

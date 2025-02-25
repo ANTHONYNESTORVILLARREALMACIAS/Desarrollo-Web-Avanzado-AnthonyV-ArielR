@@ -3,11 +3,12 @@ import { SeguroService } from '../../services/seguro.service';
 import { SeguroDTO } from '../../interface/seguro-dto';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 @Component({
   selector: 'app-seguro-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], // Añade HttpClientModule
   templateUrl: './seguro-list.component.html',
   styleUrls: ['./seguro-list.component.css']
 })

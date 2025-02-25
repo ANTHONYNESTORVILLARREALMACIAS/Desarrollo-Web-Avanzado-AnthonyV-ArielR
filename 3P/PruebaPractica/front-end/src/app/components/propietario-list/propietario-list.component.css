@@ -1,18 +1,17 @@
-/* Listado */
-.table-responsive {
-  overflow-x: auto;
-  border-radius: 8px;
+.table {
+  width: 100%;
+  table-layout: fixed; /* Fija el ancho de las columnas */
 }
 
-.table-hover tbody tr {
-  cursor: pointer;
+.table th, .table td {
+  vertical-align: middle; /* Alinea el contenido verticalmente */
+  padding: 0.75rem; /* Espaciado interno */
+  white-space: nowrap; /* Evita el salto de línea */
+  overflow: hidden; /* Oculta el contenido que excede */
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
 }
 
-.badge {
-  padding: 0.5em 0.75em;
-  font-weight: 500;
-}
-
-.text-muted {
-  color: #6c757d !important;
+.table th {
+  background-color: #f8f9fa; /* Color de fondo del encabezado */
+  font-weight: 600; /* Texto en negrita */
 }

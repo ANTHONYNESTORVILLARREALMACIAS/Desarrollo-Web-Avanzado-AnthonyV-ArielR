@@ -40,7 +40,11 @@ public class SeguroService {
         automovil.setSeguro(seguro);
         automovilRepository.save(automovil);
 
-        return new SeguroDTO(seguro.getId(), seguro.getCostoTotal(), automovil.getId());
+        return new SeguroDTO(seguro.getId(),
+                seguro.getCostoTotal(),
+                automovil.getId(),
+                automovil.getModelo(),
+                automovil.getPropietario().getNombre()+ " " + automovil.getPropietario().getApellido());
     }
 
     /**
@@ -53,7 +57,11 @@ public class SeguroService {
         Seguro seguro = new Seguro(seguroDTO.getCostoTotal(), automovil);
         seguroRepository.save(seguro);
 
-        return new SeguroDTO(seguro.getId(), seguro.getCostoTotal(), automovil.getId());
+        return new SeguroDTO(seguro.getId(),
+                seguro.getCostoTotal(),
+                automovil.getId(),
+                automovil.getModelo(),
+                automovil.getPropietario().getNombre() + " " + automovil.getPropietario().getApellido());
     }
 
     /**
@@ -66,11 +74,35 @@ public class SeguroService {
         Automovil automovil = automovilRepository.findById(seguroDTO.getAutomovilId())
                 .orElseThrow(() -> new RuntimeException("Automóvil no encontrado"));
 
-        seguro.setCostoTotal(seguroDTO.getCostoTotal());
+        // Recalcular el costo total basado en el automóvil
+        double nuevoCosto = calcularCostoSeguro(automovil);
+        seguro.setCostoTotal(nuevoCosto);
         seguro.setAutomovil(automovil);
-        seguroRepository.save(seguro);
 
-        return new SeguroDTO(seguro.getId(), seguro.getCostoTotal(), automovil.getId());
+        Seguro seguroActualizado = seguroRepository.save(seguro);
+
+        return new SeguroDTO(
+                seguroActualizado.getId(),
+                seguroActualizado.getCostoTotal(),
+                automovil.getId(),
+                automovil.getModelo(),
+                automovil.getPropietario().getNombre() + " " + automovil.getPropietario().getApellido()
+        );
+    }
+
+    /**
+     * Método auxiliar para calcular el costo del seguro basado en el automóvil
+     */
+    private double calcularCostoSeguro(Automovil automovil) {
+        // Ejemplo de lógica: costo base + ajuste por valor y accidentes
+        double costoBase = 500.0; // Costo base fijo (ajústalo según tu lógica)
+        double valorAutomovil = automovil.getValor(); // Asumiendo que Automovil tiene un campo "valor"
+        int numeroAccidentes = automovil.getAccidentes(); // Asumiendo que Automovil tiene un campo "numeroAccidentes"
+
+        double ajustePorValor = valorAutomovil * 0.05; // 5% del valor del automóvil
+        double ajustePorAccidentes = numeroAccidentes * 100.0; // $100 por accidente
+
+        return costoBase + ajustePorValor + ajustePorAccidentes;
     }
 
     /**
@@ -102,7 +134,10 @@ public class SeguroService {
                 .map(seguro -> new SeguroDTO(
                         seguro.getId(),
                         seguro.getCostoTotal(),
-                        seguro.getAutomovil().getId()
+                        seguro.getAutomovil().getId(),
+                        seguro.getAutomovil().getModelo(), // Nuevo
+                        seguro.getAutomovil().getPropietario().getNombre() + " " +
+                                seguro.getAutomovil().getPropietario().getApellido() // Nuevo
                 ))
                 .collect(Collectors.toList());
     }
@@ -117,7 +152,10 @@ public class SeguroService {
         return new SeguroDTO(
                 seguro.getId(),
                 seguro.getCostoTotal(),
-                seguro.getAutomovil().getId()
+                seguro.getAutomovil().getId(),
+                seguro.getAutomovil().getModelo(), // Nuevo
+                seguro.getAutomovil().getPropietario().getNombre() + " " +
+                        seguro.getAutomovil().getPropietario().getApellido() // Nuevo
         );
     }
 

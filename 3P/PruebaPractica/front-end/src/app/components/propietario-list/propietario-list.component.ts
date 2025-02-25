@@ -3,11 +3,12 @@ import { OwnerService } from '../../services/owner.service';
 import { PropietarioDTO } from '../../interface/propietario-dto';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 @Component({
   selector: 'app-propietario-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], // Añade HttpClientModule
   templateUrl: './propietario-list.component.html',
   styleUrls: ['./propietario-list.component.css']
 })

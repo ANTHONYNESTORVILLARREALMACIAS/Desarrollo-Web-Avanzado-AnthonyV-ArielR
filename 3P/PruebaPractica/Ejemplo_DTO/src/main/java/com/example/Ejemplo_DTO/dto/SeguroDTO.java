@@ -4,14 +4,18 @@ public class SeguroDTO {
     private Long id;
     private double costoTotal;
     private Long automovilId;
+    private String modeloAutomovil;
+    private String propietarioNombre;
 
     //constructor
 
 
-    public SeguroDTO(Long id, double costoTotal, Long automovilId) {
+    public SeguroDTO(Long id, double costoTotal, Long automovilId, String modeloAutomovil, String propietarioNombre) {
         this.id = id;
         this.costoTotal = costoTotal;
         this.automovilId = automovilId;
+        this.modeloAutomovil = modeloAutomovil;
+        this.propietarioNombre = propietarioNombre;
     }
 
     //getter - setters
@@ -37,5 +41,21 @@ public class SeguroDTO {
 
     public void setAutomovilId(Long automovilId) {
         this.automovilId = automovilId;
+    }
+
+    public String getModeloAutomovil() {
+        return modeloAutomovil;
+    }
+
+    public void setModeloAutomovil(String modeloAutomovil) {
+        this.modeloAutomovil = modeloAutomovil;
+    }
+
+    public String getPropietarioNombre() {
+        return propietarioNombre;
+    }
+
+    public void setPropietarioNombre(String propietarioNombre) {
+        this.propietarioNombre = propietarioNombre;
     }
 }

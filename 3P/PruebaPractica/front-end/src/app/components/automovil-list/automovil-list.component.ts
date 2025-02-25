@@ -3,11 +3,12 @@ import { AutomovilService } from '../../services/automovil.service';
 import { AutomovilDTO } from '../../interface/automovil-dto';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 @Component({
   selector: 'app-automovil-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, HttpClientModule], // Añade HttpClientModule
   templateUrl: './automovil-list.component.html',
   styleUrls: ['./automovil-list.component.css']
 })

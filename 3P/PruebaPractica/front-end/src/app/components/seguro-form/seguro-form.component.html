@@ -1,14 +1,19 @@
 <div class="card">
-  <h2>
-    <i class="bi" [class.bi-pencil-square]="editando" [class.bi-shield-plus]="!editando"></i>
-    {{ editando ? 'Editar' : 'Crear' }} Seguro
-  </h2>
+  <h2><i class="bi bi-shield-check me-2"></i>{{ editando ? 'Editar Seguro' : 'Crear Seguro' }}</h2>
 
+  <!-- Mensaje de no cambios -->
+  <div *ngIf="mostrarSinCambios" class="alert alert-warning">
+    <i class="bi bi-exclamation-triangle me-2"></i>
+    No se han detectado cambios para actualizar
+  </div>
+
+  <!-- Resto del formulario -->
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
     <div class="col-md-6">
       <label class="form-label">Automóvil</label>
       <select class="form-select"
               formControlName="automovilId"
+              (change)="onAutomovilSeleccionado($event)"
               [class.is-invalid]="form.get('automovilId')?.invalid && form.get('automovilId')?.touched">
         <option value="">Seleccione un automóvil</option>
         <option *ngFor="let a of automoviles" [value]="a.id">
@@ -20,22 +25,19 @@
       </div>
     </div>
 
-    <div class="col-md-6">
-      <label class="form-label">Costo Total</label>
-      <input type="number"
+    <div class="col-md-6" *ngIf="costoCalculado !== null">
+      <label class="form-label">Costo del Seguro</label>
+      <input type="text"
              class="form-control"
-             formControlName="costoTotal"
-             [class.is-invalid]="form.get('costoTotal')?.invalid && form.get('costoTotal')?.touched">
-      <div class="invalid-feedback">
-        El costo debe ser mayor a 0
-      </div>
+             [value]="costoCalculado | currency"
+             readonly>
     </div>
 
     <div class="col-12 d-flex gap-2 justify-content-end border-top pt-3 mt-4">
       <button type="submit"
               class="btn btn-primary"
-              [disabled]="form.invalid">
-        {{ editando ? 'Actualizar' : 'Crear' }}
+              [disabled]="form.invalid || (editando && form.pristine)">
+        {{ editando ? 'Actualizar' : 'Crear' }} Seguro
       </button>
       <a routerLink="/seguros" class="btn btn-outline-secondary">Cancelar</a>
     </div>

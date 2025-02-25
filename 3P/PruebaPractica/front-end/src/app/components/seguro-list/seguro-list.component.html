@@ -25,11 +25,11 @@
           <td class="text-end">
             <div class="d-flex gap-2 justify-content-end">
               <a [routerLink]="['/seguros/detalles', s.id]"
-                 class="btn btn-sm btn-outline-primary">
+              class="btn btn-sm btn-outline-primary">
                 <i class="bi bi-eye"></i>
               </a>
               <a [routerLink]="['/seguros/editar', s.id]"
-                 class="btn btn-sm btn-outline-success">
+              class="btn btn-sm btn-outline-success">
                 <i class="bi bi-pencil"></i>
               </a>
               <button (click)="eliminar(s.id!)"

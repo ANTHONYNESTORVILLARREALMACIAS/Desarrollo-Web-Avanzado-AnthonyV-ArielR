@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { OwnerService } from '../../services/owner.service';
 import { PropietarioDTO } from '../../interface/propietario-dto';
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 @Component({
   selector: 'app-automovil-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, HttpClientModule],
   templateUrl: './automovil-form.component.html',
   styleUrls: ['./automovil-form.component.css']
 })

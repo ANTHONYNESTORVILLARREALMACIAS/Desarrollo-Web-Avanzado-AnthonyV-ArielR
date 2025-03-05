@@ -9,7 +9,8 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = '+00:00'; 
+-- Asegúrate de incluir el símbolo '+' y usar formato hh:mm
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;

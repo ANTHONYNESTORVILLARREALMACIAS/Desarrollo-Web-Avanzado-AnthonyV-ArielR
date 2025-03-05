@@ -1,12 +1,3 @@
-install.packages("shiny")
-install.packages("ggplot2")
-install.packages("cluster")
-install.packages("factoextra")
-install.packages("corrplot")
-install.packages("caret")
-install.packages("dendextend")
-
-
 # Cargar librerías necesarias
 library(shiny)
 library(ggplot2)
